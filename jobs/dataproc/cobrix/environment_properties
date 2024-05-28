@@ -1,0 +1,5 @@
+{
+  "copybook_bucket": "test-image-dd-bucket",
+  "source_data_bucket": "test-image-dd-bucket",
+  "target_data_bucket": "test-image-dd-bucket"
+}
