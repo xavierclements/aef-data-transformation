@@ -31,3 +31,10 @@ variable "region" {
   type        = string
   nullable    = false
 }
+
+variable "environment" {
+  description = "Environment folder name you want to deploy. ../jobs/<<ENVIRONMENT>>/.. If not set wherever is in the dev environment folder will be deployed."
+  type        = string
+  default     = "dev"
+  nullable    = false
+}

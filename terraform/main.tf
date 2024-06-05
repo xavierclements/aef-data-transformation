@@ -25,14 +25,17 @@ data "google_project" "project" {
 
 resource "google_storage_bucket_object" "uploaded_artifacts" {
   for_each = fileset("../artifacts/", "**/*")
-  name         = each.key
-  bucket       = google_storage_bucket.aef_artifacts_bucket.name
-  source       = "../artifacts/${each.key}"
+  name     = each.key
+  bucket   = google_storage_bucket.aef_artifacts_bucket.name
+  source   = "../artifacts/${each.key}"
 }
 
 resource "google_storage_bucket_object" "uploaded_jobs" {
-  for_each = fileset("../jobs/", "**/*")
-  name         = each.key
+  for_each = fileset(format("../jobs/%s/", var.environment), "**/*")
+
+  # Extract filename from the full path (removing the environment subfolder)
+  name   = replace(each.key, format("../jobs/%s/", var.environment), "")
   bucket       = google_storage_bucket.aef_jobs_bucket.name
-  source       = "../jobs/${each.key}"
+  # Use the full path for the source
+  source = format("../jobs/%s/%s", var.environment, each.key)
 }
