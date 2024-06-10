@@ -3,15 +3,17 @@
   "dataflow_template_version": "latest",
   "dataflow_max_workers": "10",
   "dataflow_temp_bucket": "aef-pso-amex-data-platform2-temp",
+  "network": "fake-on-prem-network-for-sql",
+  "subnetwork": "regions/us-central1/subnetworks/defaultuscentral1",
   "dataflow_job_params": {
     "driverJars": "gs://pso-amex-data-platform2_aef_artifacts_bucket/jdbcjars/postgresql-42.7.3.jar",
     "driverClassName": "org.postgresql.Driver",
-    "connectionURL": "jdbc:postgresql://34.27.74.186:5432/postgres",
+    "connectionURL": "jdbc:postgresql://10.60.0.9:5432/postgres",
     "outputTable": "pso-amex-data-platform2:aef_landing_sample_dataset.raw_suppliers",
-    "outputTable": "pso-amex-data-platform2:aef_landing_sample_dataset.raw_suppliers",
+    "query": "select * from public.suppliers",
     "bigQueryLoadingTemporaryDirectory": "gs://aef-pso-amex-data-platform2-temp/jdbc_temp/suppliers/",
     "username": "user1",
     "password": "changeme",
-    "createDisposition": "CREATE_IF_NEEDED"
+    "createDisposition": "CREATE_NEVER"
   }
 }
