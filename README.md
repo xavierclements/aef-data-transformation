@@ -8,9 +8,8 @@ This opinionated data transformation management repository can be used independe
 1. **(This repository) Data Transformation**: Directly used by end data practitioners to define, store, and deploy data transformations.
 
 ### Repository
-![data_processing_repo.png](data_processing_repo.png)
-
 This repository is a central location for storing and deploy artifacts necessary for your data transformations, such as JDBC drivers and compiled JAR dependencies. However, its core function is to maintain configuration files that define your transformations. These JSON, YAML, or similar parameter files are referenced as reusable steps in your data pipelines, and are interpreted by the execution infrastructure within the Orchestration framework.
+![data_processing_repo.png](data_processing_repo.png)
 ```
 ├── artifacts
 │   ├── dataporc
@@ -29,21 +28,26 @@ This repository is a central location for storing and deploy artifacts necessary
     │   ├── dataform-tag-executor
     │   │   └── run_dataform_tag.json
     │   │   └── ... 
-    │   ├── dataproj-templates
+    │   ├── dataproc-templates
     │   └── ...
     ├── prod
     └── ...
 ```
 
 ### Terraform:
+1. Define your terraform variables
 <!-- BEGIN TFDTFOC -->
-| name                                 | description                                                                                                                                                                                                                        | type     | required | default |
-|--------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|----------|---------|
-| [domain](variables.tf#L1)           | Your organization or domain name, organization if centralized data management, domain name if one repository for each data domain in a Data mesh environment.                                                                      | string   | true     | -       |
-| [project](variables.tf#L6)          | The project where the GCS buckets for storing your artifacts and job definitions will be created.                                                                                                                                    | string   | true     | -       |
-| [region](variables.tf#L11)         | The region where the GCS buckets for storing your artifacts and job definitions will be created.                                                                                                                                      | string   | true     | -       |
-| [environment](variables.tf#L16)     | Environment folder name you want to deploy. ../jobs/<<ENVIRONMENT>>/.. If not set wherever is in the dev environment folder will be deployed.                                                                                             | string   | false    | dev      |
+| name                                  | description                                                                                                                                                                                                                        | type     | required | default |
+|---------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|----------|---------|
+| [domain](variables.tf#L1)             | Your organization or domain name, organization if centralized data management, domain name if one repository for each data domain in a Data mesh environment.                                                                      | string   | true     | -       |
+| [project](variables.tf#L6)            | The project where the GCS buckets for storing your artifacts and job definitions will be created.                                                                                                                                  | string   | true     | -       |
+| [region](variables.tf#L11)            | The region where the GCS buckets for storing your artifacts and job definitions will be created.                                                                                                                                   | string   | true     | -       |
+| [environment](variables.tf#L16)       | Environment folder name you want to deploy. ../jobs/<<ENVIRONMENT>>/.. If not set wherever is in the dev environment folder will be deployed.                                                                                      | string   | false    | dev     |
 <!-- END TFDOC -->
+2. Run the Terraform Plan / Apply using the variables you defined.
+```bash
+terraform plan -var 'project=<PROJECT>' -var 'region=<REGION>' -var 'domain=<DOMAIN_NAME>' -var 'environment=dev'
+```
 
 ## Usage
 While this repository can be used to keep track of your dependencies and data transformation definitions, the provided terraform code can be used to control deployment, but you can deploy it as another step in your CI/CD pipeline instead.
