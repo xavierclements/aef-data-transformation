@@ -21,13 +21,13 @@ variable "domain" {
 }
 
 variable "project" {
-  description = "Project where the the dataform repositories, the Dataplex metadata, and other resources will be created."
+  description = "The project where the GCS buckets for storing your artifacts and job definitions will be created."
   type        = string
   nullable    = false
 }
 
 variable "region" {
-  description = "Region where the datasets from the dataform.json files, the dataform repositories, the Dataplex metadata, and other resources will be created."
+  description = "The region where the GCS buckets for storing your artifacts and job definitions will be created."
   type        = string
   nullable    = false
 }
