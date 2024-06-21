@@ -37,12 +37,12 @@ This repository is a central location for storing and deploy artifacts necessary
 ### Terraform:
 1. Define your terraform variables
 <!-- BEGIN TFDTFOC -->
-| name                                  | description                                                                                                                                                                                                                        | type     | required | default |
-|---------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|----------|---------|
-| [domain](variables.tf#L1)             | Your organization or domain name, organization if centralized data management, domain name if one repository for each data domain in a Data mesh environment.                                                                      | string   | true     | -       |
-| [project](variables.tf#L6)            | The project where the GCS buckets for storing your artifacts and job definitions will be created.                                                                                                                                  | string   | true     | -       |
-| [region](variables.tf#L11)            | The region where the GCS buckets for storing your artifacts and job definitions will be created.                                                                                                                                   | string   | true     | -       |
-| [environment](variables.tf#L16)       | Environment folder name you want to deploy. ../jobs/<<ENVIRONMENT>>/.. If not set wherever is in the dev environment folder will be deployed.                                                                                      | string   | false    | dev     |
+| name                                  | description                                                                                                                                                   | type     | required | default |
+|---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|----------|---------|
+| [domain](variables.tf#L1)             | Your organization or domain name, organization if centralized data management, domain name if one repository for each data domain in a Data mesh environment. | string   | true     | -       |
+| [project](variables.tf#L6)            | The project where the GCS buckets for storing your artifacts and job definitions will be created.                                                             | string   | true     | -       |
+| [region](variables.tf#L11)            | The region where the GCS buckets for storing your artifacts and job definitions will be created.                                                              | string   | true     | -       |
+| [environment](variables.tf#L16)       | Environment folder name you want to deploy. ../jobs/$ENVIRONMENT/.. If not set wherever is in the dev environment folder will be deployed.                    | string   | false    | dev     |
 <!-- END TFDOC -->
 2. Run the Terraform Plan / Apply using the variables you defined.
 ```bash

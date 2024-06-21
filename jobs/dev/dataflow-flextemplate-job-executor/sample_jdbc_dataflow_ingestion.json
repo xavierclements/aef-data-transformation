@@ -8,7 +8,7 @@
   "dataflow_job_params": {
     "driverJars": "gs://analytics-engg-framework-demo_aef_artifacts_bucket/jdbcjars/postgresql-42.7.3.jar",
     "driverClassName": "org.postgresql.Driver",
-    "connectionURL": "jdbc:postgresql://10.60.0.3:5432/postgres",
+    "connectionURL": "jdbc:postgresql://<YOUR_SAMPLE_INSTANCE_IP>:5432/postgres",
     "outputTable": "analytics-engg-framework-demo:aef_landing_sample_dataset.raw_suppliers",
     "query": "select * from public.suppliers",
     "bigQueryLoadingTemporaryDirectory": "gs://aef-analytics-engg-framework-demo-temp/jdbc_temp/suppliers/",

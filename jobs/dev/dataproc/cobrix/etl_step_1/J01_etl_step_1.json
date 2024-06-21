@@ -1,5 +1,0 @@
-{
-  "copybook_file": "gs://${copybook_bucket}/example_copybook.cpy",
-  "source_data_folder": "gs://${source_data_bucket}/companies_data",
-  "target_data_folder": "gs://${target_data_bucket}/result"
-}
