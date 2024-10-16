@@ -8,6 +8,8 @@ This opinionated data transformation management repository can be used independe
 1. [Data Model](https://github.com/oscarpulido55/aef-data-model): Directly used by end data practitioners to manage data models, schemas, and Dataplex metadata.
 1. [Data Orchestration](https://github.com/oscarpulido55/aef-data-orchestration): Directly used by end data practitioners to define and deploy data pipelines using levels, threads, and steps.
 1. **(This repository) Data Transformation**: Directly used by end data practitioners to define, store, and deploy data transformations.
+![AEF_repositories.png](AEF_repositories.png)
+
 
 ### Repository
 This repository is a central location for storing and deploy artifacts necessary for your data transformations, such as JDBC drivers and compiled JAR dependencies. However, its core function is to maintain configuration files that define your transformations. These JSON, YAML, or similar parameter files are referenced as reusable steps in your data pipelines, and are interpreted by the execution infrastructure within the Orchestration framework.
