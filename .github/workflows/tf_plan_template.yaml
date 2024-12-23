@@ -51,7 +51,7 @@ jobs:
         id: tf-plan
         run: |
           cd terraform
-          terraform plan -detailed-exitcode -no-color -out=${{ inputs.environment }}-tfplandatatransform -var-file="../config/${{ inputs.environment }}.tfvars.json"
+          terraform plan -detailed-exitcode -no-color -out=${{ inputs.environment }}-tfplandatatransform -var-file="../config/${{ inputs.environment }}.tfvars"
 
       # Save plan to artifacts
       - name: Publish Terraform Plan (${{ inputs.environment }})
@@ -65,7 +65,7 @@ jobs:
         id: tf-plan-string
         run: |
           cd terraform
-          TERRAFORM_PLAN=$(terraform plan -detailed-exitcode -no-color -out=${{ inputs.environment }}-tfplandatatransform -var-file="../config/${{ inputs.environment }}.tfvars.json")
+          TERRAFORM_PLAN=$(terraform plan -detailed-exitcode -no-color -out=${{ inputs.environment }}-tfplandatatransform -var-file="../config/${{ inputs.environment }}.tfvars")
 
           delimiter="$(openssl rand -hex 8)"
           echo "summary<<${delimiter}" >> $GITHUB_OUTPUT
