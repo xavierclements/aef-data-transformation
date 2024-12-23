@@ -31,11 +31,11 @@ resource "google_storage_bucket_object" "uploaded_artifacts" {
 }
 
 resource "google_storage_bucket_object" "uploaded_jobs" {
-  for_each = fileset(format("../jobs/%s/", var.environment), "**/*")
+  for_each = fileset(format("../config/%s/jobs/", var.environment), "**/*")
 
   # Extract filename from the full path (removing the environment subfolder)
-  name   = replace(each.key, format("../jobs/%s/", var.environment), "")
-  bucket       = google_storage_bucket.aef_jobs_bucket.name
+  name   = replace(each.key, format("../config/%s/jobs/", var.environment), "")
+  bucket = google_storage_bucket.aef_jobs_bucket.name
   # Use the full path for the source
-  source = format("../jobs/%s/%s", var.environment, each.key)
+  source = format("../config/%s/jobs/%s", var.environment, each.key)
 }
